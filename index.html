@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat with ChatGPT</title>
+    <title>Chat with Coco!</title>
 </head>
 <body>
     <h2>Chat with ChatGPT</h2>
@@ -13,7 +13,7 @@
         <button type="submit">Submit</button>
     </form>
 
-    <div id="response"></div>
+    <div id="response.text"></div>
 <script>
   const CharacterAI = require("node_characterai");
 const characterAI = new CharacterAI();
@@ -23,7 +23,7 @@ const characterAI = new CharacterAI();
   await characterAI.authenticateAsGuest();
 
   // Place your character's id here
-  const characterId = "8_1NyR8w1dOXmI1uWaieQcd147hecbdIK7CeEAIrdJw";
+  const characterId = "QjGZs9dCOkKRCwcqsF_-0csGsCtrqibqNR1HU-VY-uw";
 
   const chat = await characterAI.createOrContinueChat(characterId);
 
