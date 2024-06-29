@@ -14,31 +14,24 @@
     </form>
 
     <div id="response"></div>
+<script>
+  const CharacterAI = require("node_characterai");
+const characterAI = new CharacterAI();
 
-    <script>
-        document.getElementById('chatForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const userInput = document.getElementById('userInput').value;
+(async () => {
+  // Authenticating as a guest (use `.authenticateWithToken()` to use an account)
+  await characterAI.authenticateAsGuest();
 
-            // Replace with actual endpoint that connects to ChatGPT model
-            const endpointUrl = 'https://your-backend-server.com/chatgpt';
+  // Place your character's id here
+  const characterId = "8_1NyR8w1dOXmI1uWaieQcd147hecbdIK7CeEAIrdJw";
 
-            fetch(endpointUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ text: userInput })
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('response').innerText = `ChatGPT says: ${data.response}`;
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                document.getElementById('response').innerText = 'Error fetching response. Please try again later.';
-            });
-        });
+  const chat = await characterAI.createOrContinueChat(characterId);
+
+  // Send a message
+  const response = await chat.sendAndAwaitResponse("Hello discord mod!", true);
+
+  console.log(response);
+  // Use `response.text` to use it as a string
     </script>
 </body>
 </html>
